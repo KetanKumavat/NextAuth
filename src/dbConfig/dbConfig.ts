@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export async function connect() {
     try {
         mongoose.connect(process.env.MONGODB_URI!)
         const connection = mongoose.connection;
-        connection.on('Connected',()=>{
+        connection.on('connected',()=>{
             console.log(" Successfully Connected to MongoDB");
         })
         connection.on('error',(err)=>{
