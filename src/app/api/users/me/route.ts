@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const user = await User.findById(userId);
     return NextResponse.json({ message: "User Found", data: user });
   } catch (error) {
-    return NextResponse.json({ error: error.message });
+    return NextResponse.json({ error: error.message});
   }
 }
 
