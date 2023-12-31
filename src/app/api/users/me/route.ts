@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const userName = await getDataFromToken(request);
     const user = await User.findById(userId);
     return NextResponse.json({ message: "User Found", data: user });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ error: error.message});
   }
 }
