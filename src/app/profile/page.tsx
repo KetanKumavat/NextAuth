@@ -20,16 +20,36 @@ export default function ProfilePage() {
            toast.error(error.message)
         }
     }
+    // const getUserDetails = async () => {
+    //   const res = await axios.get('/api/users/me');
+    //   console.log(res.data);
+    //   setData(res.data.data._id);
+    //   setUsername(res.data.data.username)
+    //   setEmail(res.data.data.email);
+    // }
+
     const getUserDetails = async () => {
-      const res = await axios.get('/api/users/me');
-      console.log(res.data);
+  try {
+    const res = await axios.get('/api/users/me');
+    console.log(res.data);
+
+    if (res.data.data) {
       setData(res.data.data._id);
-      setUsername(res.data.data.username)
+      setUsername(res.data.data.username);
       setEmail(res.data.data.email);
+    } else {
+      console.error("User data is undefined");
     }
+  } catch (error:any) {
+    console.log(error.message);
+    toast.error(error.message);
+  }
+};
+
+
     useEffect(() => {
       getUserDetails();
-    });
+    }, []);
 
     return (
       <div className="overflow-hidden">
