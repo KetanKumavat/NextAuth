@@ -28,7 +28,7 @@ export default function ProfilePage() {
     //   setEmail(res.data.data.email);
     // }
 
-    const getUserDetails = async () => {
+  const getUserDetails = async () => {
   try {
     const res = await axios.get('/api/users/me');
     console.log(res.data);
